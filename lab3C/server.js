@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url, true);
 
     if (parsedUrl.pathname == "/writeFile" ) {
-        const fileName = parsedUrl.query.file || "text.txt"
+        const fileName = parsedUrl.query.file || "file.txt"
         const text = parsedUrl.query.text
 
         if(!text){
