@@ -38,8 +38,13 @@ const server = http.createServer((req, res) => {
             res.statusCode = 200;
             res.end(content);
         }catch(err){
-            res.statusCode = 500;
-            res.end("Error reading file");
+            if(err.code == "ENOENT"){
+                res.statusCode = 404;
+                res.end(`File not found ${requestedFile}`);
+            }else{
+                res.statusCode = 500;
+                res.end("Error reading file");
+            }   
         }
     }else{
         res.statusCode = 400
