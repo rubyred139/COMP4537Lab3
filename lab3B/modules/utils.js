@@ -1,10 +1,12 @@
 const fs = require('fs');
+const moment = require('moment-timezone');
 
-function getDate(){
-    const date = new Date();
-    return date.toString();
+// Function to return the current time in Vancouver time
+function getDate() {
+    // Get current time in Vancouver's timezone
+    return moment().tz("America/Vancouver").format('YYYY-MM-DD HH:mm:ss');
 }
-// console.log(getDate());
+
 
 function getGreeting(guest, timestamp){
     try{
